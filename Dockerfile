@@ -43,5 +43,7 @@ RUN cd ${AD_DEMO_HOME}/${AD_DEMO_NAME}/app && \
 WORKDIR $AD_DEMO_NAME
 
 ## Deploy application
-EXPOSE 8088, 9153
+EXPOSE 8088
+# Expose Metrics Port
+EXPOSE 9153
 CMD ["gunicorn", "app:create_app()"]
