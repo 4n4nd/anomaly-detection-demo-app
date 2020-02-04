@@ -7,7 +7,7 @@ ARG AD_DEMO_REPO_OWNER=HumairAK
 ARG AD_DEMO_NAME=anomaly-detection-demo-app
 
 # Configure environment
-ENV GUNICORN_BIND=0.0.0.0:8088 \
+ENV GUNICORN_BIND=0.0.0.0:8080 \
     GUNICORN_LIMIT_REQUEST_FIELD_SIZE=0 \
     GUNICORN_LIMIT_REQUEST_LINE=0 \
     GUNICORN_TIMEOUT=60 \
@@ -43,7 +43,6 @@ RUN cd ${AD_DEMO_HOME}/${AD_DEMO_NAME}/app && \
 WORKDIR $AD_DEMO_NAME
 
 ## Deploy application
-EXPOSE 8088
-# Expose Metrics Port
-EXPOSE 9153
+EXPOSE 8080
+
 CMD ["gunicorn", "app:create_app()"]
